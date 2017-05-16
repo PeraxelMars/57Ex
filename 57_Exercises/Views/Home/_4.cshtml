@@ -1,0 +1,83 @@
+﻿@using _57_Exercises.Controllers
+
+@model _57_Exercises.Models.TheModel
+
+@{
+    ViewBag.Title = "4";
+}
+
+@using (Ajax.BeginForm(actionName: nameof(HomeController._4), ajaxOptions: new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "result" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group" id="fg_noun">
+            @Html.Label("noun", "Please enter a noun:")
+            @Html.TextBox("noun", "", new { @class = "form-control", autofocus = "" })
+            <button type="button" class="btn btn-default">Ok</button>
+        </div>
+        <div class="form-group hidden" id="fg_werb">
+            @Html.Label("werb", "Please enter a werb:")
+            @Html.TextBox("werb", "", new { @class = "form-control" })
+            <button type="button" class="btn btn-default">Ok</button>
+        </div>
+        <div class="form-group hidden" id="fg_adjective">
+            @Html.Label("adjective", "Please enter an adjective:")
+            @Html.TextBox("adjective", "", new { @class = "form-control" })
+            <button type="button" class="btn btn-default">Ok</button>
+        </div>
+        <div class="form-group hidden" id="fg_adwerb">
+            @Html.Label("adwerb", "Please enter an adwerb:")
+            @Html.TextBox("adwerb", "", new { @class = "form-control" })
+            <button type="button" class="btn btn-default">Ok</button>
+        </div>
+        <div class="form-group hidden" id="fg_adwerb">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+    @Html.Hidden("value")
+}
+
+<h2 class="text-primary " id="result"></h2>
+
+@section scripts
+{
+    <script>
+        var MabLib = function () {
+            var words = new Array();
+
+            $(document).on("click",
+                "button[type=button]",
+                function () {
+                    var text = $(this).parent().children("input[type=text]:first").val();
+                    if (text !== "") {
+                        words.push(text);
+                        moveNext(this);
+                    }
+
+                });
+
+            $(document).on("click", "button[type=submit]", function (e) {
+                $("#value").val(JSON.stringify(words));
+                words = [];
+
+                $(this).parent().addClass("hidden");
+                $(".form-group").first().removeClass("hidden");
+
+                $("input[type=text]").val("");
+            });
+
+            function moveNext(button) {
+                $formgroup = $(button).parent();
+                $nextFG = $formgroup.next();
+
+                if ($nextFG != null) {
+                    $formgroup.addClass("hidden");
+                    $nextFG.removeClass("hidden");
+                    $nextFG.find("input").focus();
+                }
+            }
+        }();
+    </script>
+}

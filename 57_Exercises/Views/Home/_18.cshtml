@@ -1,0 +1,50 @@
+﻿@using _57_Exercises.Controllers
+
+@model _57_Exercises.ViewModels.Ex18ViewModel
+
+@{
+    ViewBag.Title = "18";
+}
+
+@using (Ajax.BeginForm(actionName: nameof(HomeController._18), ajaxOptions: new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Temperature, "Enter temp.: ")
+            @Html.EditorFor(m => m.Temperature, new { htmlAttributes = new { @class = "form-control", autofocus = "" } })
+        </div>
+    </div><br />
+    <div class="form-inline">
+        <div class="form-inline marginTop2">
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                    <input type="radio" name="radioGroup" id="Celsius" autocomplete="off" checked />Celsius
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="radioGroup" id="Farenheit" autocomplete="off">Farenheit
+                </label>
+            </div>
+            <button type="submit" id="btnSubmit" class="btn btn-default">Ok</button>
+        </div>
+    </div>
+    <input type="hidden" name="TempScale" id="TempScale" value="0" />
+}
+
+<p>
+    <div id="result"></div>
+    <h2 class="text-primary text-warning" id="error"></h2>
+</p>
+
+@section scripts
+{
+    <script>
+        var TemperatireConv = function () {
+            $(document).on("click", "button[type=submit]", function () {
+                $("#TempScale").val($("input[type=radio]:checked").attr("id"));
+            });
+        }();
+    </script>
+}
