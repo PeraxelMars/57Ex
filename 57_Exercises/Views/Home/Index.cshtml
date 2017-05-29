@@ -26,14 +26,57 @@
         <fieldset>
             <legend>Chapter 3</legend>
             <div class="btn-group">
-                 @Html.ActionLink("7. Area", nameof(HomeController._7), null, new { @class = "btn btn-default" })
-                 @Html.ActionLink("8. Pizza", nameof(HomeController._8), null, new { @class = "btn btn-default" })
+                @Html.ActionLink("7. Area", nameof(HomeController._7), null, new { @class = "btn btn-default" })
+                @Html.ActionLink("8. Pizza", nameof(HomeController._8), null, new { @class = "btn btn-default" })
                 @Html.ActionLink("9. Paint Calculator", nameof(HomeController._9), null, new { @class = "btn btn-default" })
                 @Html.ActionLink("10. Self-Checkout", nameof(HomeController._10), null, new { @class = "btn btn-default" })
                 @Html.ActionLink("12. Interest", nameof(HomeController._12), null, new { @class = "btn btn-default" })
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-12 marginTop2">
+        <fieldset>
+            <legend>Chapter 4</legend>
+            <div class="btn-group">
                 @Html.ActionLink("14. Tax", nameof(HomeController._14), null, new { @class = "btn btn-default" })
                 @Html.ActionLink("15. Password", nameof(HomeController._15), null, new { @class = "btn btn-default" })
                 @Html.ActionLink("18. Temp", nameof(HomeController._18), null, new { @class = "btn btn-default" })
+                @Html.ActionLink("20. MultiStateTax", nameof(HomeController._20), null, new { @class = "btn btn-default" })
+                @Html.ActionLink("22. Compare Numbers", nameof(HomeController._22), null, new { @class = "btn btn-default" })
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-12 marginTop2">
+        <fieldset>
+            <legend>Chapter 5</legend>
+            <div class="btn-group">
+                @Html.ActionLink("24. Anagram Checker",
+                    nameof(Chapter5Controller._24),
+                    nameof(Chapter5Controller).Replace("Controller",""), null, new { @class = "btn btn-default" })
+                @Html.ActionLink("25. Password",
+                    nameof(Chapter5Controller._25),
+                    nameof(Chapter5Controller).Replace("Controller", ""), null, new { @class = "btn btn-default" })
+                @Html.ActionLink("27. Validate input",
+                    nameof(Chapter5Controller._27),
+                    nameof(Chapter5Controller).Replace("Controller", ""), null, new { @class = "btn btn-default" })
+
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-12 marginTop2">
+        <fieldset>
+            <legend>Chapter 6</legend>
+            <div class="btn-group">
+                @Html.ActionLink("28. Adding numbers",
+                    nameof(Chapter6Controller._28),
+                    nameof(Chapter6Controller).Replace("Controller", ""), null, new { @class = "btn btn-default" })
+                @Html.ActionLink("25. Password",
+                    nameof(Chapter5Controller._25),
+                    nameof(Chapter5Controller).Replace("Controller", ""), null, new { @class = "btn btn-default" })
+                @Html.ActionLink("27. Validate input",
+                    nameof(Chapter5Controller._27),
+                    nameof(Chapter5Controller).Replace("Controller", ""), null, new { @class = "btn btn-default" })
+
             </div>
         </fieldset>
     </div>

@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
-using System.Web.ModelBinding;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using _57_Exercises.Helpers;
@@ -56,7 +54,7 @@ namespace _57_Exercises.Controllers
         {
             if (string.IsNullOrEmpty(value)) return Content("Please enter a qoute!");
 
-            var qoute = "The qoute is \""+value+"\".";
+            var qoute = "The qoute is \"" + value + "\".";
             return Content(qoute);
         }
 
@@ -110,7 +108,7 @@ namespace _57_Exercises.Controllers
             Ex7 ex7 = new Ex7(length, width, option);
             double sqFeet = ex7.GetAreaInSquareFeet();
             double sqMeter = ex7.GetAreaInSquareMeter();
-            return PartialView("_7_partial", new double[]{sqFeet, sqMeter});
+            return PartialView("_7_partial", new double[] { sqFeet, sqMeter });
         }
 
         public ActionResult _8()
@@ -207,7 +205,7 @@ namespace _57_Exercises.Controllers
             }
 
             Ex15 ex = new Ex15(vm.Username, vm.Password);
-            vm.Result = ex.IsValid()? "Welcome!":"I don't know you.";
+            vm.Result = ex.IsValid() ? "Welcome!" : "I don't know you.";
 
             return PartialView("_15_partial", vm);
         }
@@ -230,6 +228,70 @@ namespace _57_Exercises.Controllers
             vm.TempInCelsius = ex.GetTempInCelcius().ToString(CultureInfo.InvariantCulture);
 
             return PartialView("_18_partial", vm);
+        }
+
+        public ActionResult _20()
+        {
+            var vm = new Ex20ViewModel();
+            List<SelectListItem> states = new List<SelectListItem>
+            {
+                new SelectListItem() {Text = "", Value = "-"},
+                new SelectListItem() {Text = "Wisconsin", Value = "Wisconsin"},
+                new SelectListItem() {Text = "Illinois", Value = "Illinois"}
+            };
+            vm.States = states.OrderBy(s => s.Text);
+
+            return View("_20", vm);
+        }
+
+        [System.Web.Mvc.HttpGet]
+        public PartialViewResult _20_Counties(string state)
+        {
+            List<SelectListItem> couties = new List<SelectListItem>();
+            if (state == "Wisconsin")
+            {
+
+                couties.Add(new SelectListItem() { Text = "Eau Claire", Value = "Eau Claire" });
+                couties.Add(new SelectListItem() { Text = "Dunn", Value = "Dunn" });
+            };
+
+            return PartialView("_20_partialCounties", couties.OrderBy(c => c.Text).ToList());
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public PartialViewResult _20([FromBody] Ex20ViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction(nameof(_20));
+            }
+
+            Ex20 ex = new Ex20(vm.OrderAmount.Value, vm.State, vm.County);
+
+            vm.TaxRate = ex.GetTaxRate();
+
+            return PartialView("_20_partial", vm);
+        }
+
+        public ActionResult _22()
+        {
+            return View();
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public PartialViewResult _22([FromBody] Ex22ViewModel vm)
+        {
+            if (!ModelState.IsValid || vm.Numbers.Distinct().Count() != vm.Numbers.Count)
+            {
+                ViewBag.ErrorMsg = "Invalid data!";
+            }
+            else
+            {
+                Ex22 ex = new Ex22(vm.Numbers);
+                vm.Largest = ex.Largest;
+            }
+
+            return PartialView("_22_partial", vm);
         }
     }
 }

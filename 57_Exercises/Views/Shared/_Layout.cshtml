@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise: @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @RenderSection("head", required: false)
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>*@
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>*@
                 @Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
         </div>
@@ -22,21 +23,24 @@
     <div class="container body-content">
         <h2>Exercise @ViewBag.Title</h2><br />
         @RenderBody()
-        <footer id="footer" class="col-md-7">
-            <hr/>
-            <p>57 Challenges to Develop Your Coding Skills</p>
-        </footer>
     </div>
+    <footer id="footer" class="col-md-12">
+        <p>57 Challenges to Develop Your Coding Skills</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
-    
-<script>
-    $(document).ready(function() {
-        $("input[type=text], input[type=number]").attr("autocomplete", "off");
-    });
-</script>
+
+    <script>
+        $(document).ready(function () {
+            $("input[type=text], input[type=number]").attr("autocomplete", "off");
+        });
+
+        $(document).on("click", "input[type=submit]", function () {
+            $(".validation-summary-errors").find("li").css("display", "none");
+        });
+    </script>
 </body>
 </html>

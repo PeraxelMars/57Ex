@@ -18,7 +18,7 @@ namespace _57_Exercises.Tests.Controllers
             var controller = new HomeController();
             var name = "Peraxel";
             var expected = $"Hello, {name}, nice to meet you!";
-            
+
             // Act
             var actual = controller._1(name).Content;
 
@@ -61,7 +61,7 @@ namespace _57_Exercises.Tests.Controllers
         {
             // Arrange
             HomeController controller = new HomeController();
-            string[] words = {"dog", "walk", "blue", "quickly"};
+            string[] words = { "dog", "walk", "blue", "quickly" };
             var expected = $"Do you {words[1]} your {words[2]} {words[0]} {words[3]}. That is hilarious!";
 
             // Act
@@ -75,7 +75,7 @@ namespace _57_Exercises.Tests.Controllers
         public void _5_WhenEnteringTwoNumbers_SholudReturnSumDiffProduktAndRatio()
         {
             // Arrange
-            string[] expected = {"5 + 2 = 7", "5 - 2 = 3", "5 * 2 = 10", "5 / 2 = 2,5"};
+            string[] expected = { "5 + 2 = 7", "5 - 2 = 3", "5 * 2 = 10", "5 / 2 = 2,5" };
 
             // Act
             List<string> actual = Helpers.Helper57._5_DoTheMath(5, 2).ToList();
@@ -121,7 +121,8 @@ namespace _57_Exercises.Tests.Controllers
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod] public void _7_WhenEnteringTwoNumbersInMeter_SholudReturnAreaInSquareFeet()
+        [TestMethod]
+        public void _7_WhenEnteringTwoNumbersInMeter_SholudReturnAreaInSquareFeet()
         {
             double length = 10;
             double width = 65;
@@ -193,7 +194,7 @@ namespace _57_Exercises.Tests.Controllers
             items.Add(new KeyValuePair<int, int>(1, 4));
 
             float expectedSubTotal = 64.0F;
-            float expectedTax = 3.52F;  
+            float expectedTax = 3.52F;
             float expectedTotal = 67.52F;
             // Act
             Ex10 ex = new Ex10(items);
@@ -216,10 +217,10 @@ namespace _57_Exercises.Tests.Controllers
             int years = 4;
             Ex12 ex = new Ex12(principal, rate, years);
             decimal expected = 1758m;
-            
+
             // Act
             decimal actual = ex.CalculateInterest();
-            
+
             // Assert
             Assert.AreEqual(expected, actual);
         }
@@ -310,6 +311,19 @@ namespace _57_Exercises.Tests.Controllers
 
             // Act
             float actual = ex.GetTempInFarenheight();
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void _22_WhenGivenThreeDifferentInts_SholudReturnTheLargestInt()
+        {
+            // Arrange
+            List<int> numbers = new List<int>() { 1000, 222, 333 };
+            Ex22 ex = new Ex22(numbers);
+            var expected = numbers.Max();
+            // Act
+            var actual = ex.Largest;
             // Assert
             Assert.AreEqual(expected, actual);
         }

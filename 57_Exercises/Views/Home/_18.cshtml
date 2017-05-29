@@ -42,6 +42,7 @@
 @section scripts
 {
     <script>
+        $("select").css({"border-color": "greenyellow"});
         var TemperatireConv = function () {
             $(document).on("click", "button[type=submit]", function () {
                 $("#TempScale").val($("input[type=radio]:checked").attr("id"));

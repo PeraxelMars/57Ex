@@ -1,0 +1,77 @@
+﻿@using _57_Exercises.Controllers
+
+@{
+    ViewBag.Title = "28";
+}
+
+@using (Ajax.BeginForm(actionName: nameof(Chapter6Controller._28), ajaxOptions: new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.Label("value", "Please enter value number")&nbsp;@Html.Label("", "1", new { id = "number" }):
+                @Html.TextBox("value", "", new { @class = "form-control", autofocus = "" })
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-default">Next</button>
+            </div>
+        </div>
+}
+
+<div class="form-group">
+    <div id="result"></div>
+    <h2 class="text-primary text-warning" id="error"></h2>
+</div>
+
+@section scripts
+{
+    <script>
+        var Adding = function() {
+            var numbers = 1;
+            var maxNumber = 6;
+            var values = new Array();
+
+            $(document).on("click",
+                "button[type=button]",
+                function() {
+                    if (numbers < maxNumber) {
+                        var val = $("#value").val();
+                        $("#value").val("").focus();
+
+                        if (val !== "") {
+                            values.push(val);
+                            numbers++;
+                            if (numbers === maxNumber) {
+                                $("button[type=button]").text("Submit");
+                                $("#value").parent().hide();
+                            }
+                        }
+                    } else {
+                        submit();
+                    }
+                    $("#number").text(numbers);
+                });
+
+            function submit() {
+                numbers = 1;
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("_28", "Chapter6")',
+                    data: { "values": values },
+                    datatype: "json",
+                    success: function(data) {
+                        if (data !== null && data !== "") {
+                            $("#result").html(data);
+                            values = [];
+                            $("button[type=button]").text("Next");
+                            $("#value").parent().show();
+                            $("#value").val("").focus();
+                        }
+                    }
+                });
+            }
+        }();
+    </script>
+}

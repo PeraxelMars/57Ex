@@ -1,0 +1,25 @@
+﻿@model _57_Exercises.ViewModels.Ex20ViewModel
+
+<table class="table">
+    <tr>
+        <th>
+            Results
+        </th>
+    </tr>
+
+    @if (Model.TaxRate != 0M)
+    {
+        <tr>
+            <td>
+                @($"The tax is {(Model.OrderAmount * Model.TaxRate):C2}.")
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+            @($"The total is {(Model.OrderAmount + Model.OrderAmount * Model.TaxRate):C2}.")
+        </td>
+    </tr>
+
+</table>

@@ -1,0 +1,80 @@
+﻿@using _57_Exercises.Controllers
+
+@model _57_Exercises.ViewModels.Ex25ViewModel
+
+@{
+    ViewBag.Title = "25";
+}
+
+@section head
+{
+    <style>
+        .pwStrength_Undefined {
+            color: white
+        }
+
+        .pwStrength_VeryWeak {
+            color: red
+        }
+
+        .pwStrength_Weak {
+            color: orange
+        }
+
+        .pwStrength_Strong {
+            color: greenyellow
+        }
+
+        .pwStrength_VeryStrong {
+            color: green
+        }
+    </style>
+}
+
+@using (Ajax.BeginForm(actionName: nameof(Chapter5Controller._25), ajaxOptions: new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="col-md-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password):
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                <span style="font-size: 2em" id="PasswordStrength" class="pwStrength_Undefined">&#9679;</span>
+            </div>
+            <div class="form-group pull-right">
+                <input type="submit" value="Ok" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<p>
+    <div id="result"></div>
+    <h2 class="text-primary text-warning" id="error"></h2>
+</p>
+
+
+@section scripts{
+    <script>
+        var PW = function() {
+            $(document).on("keyup", "#Password", function() {
+                getPwStrengt($(this).val());
+            });
+
+            function getPwStrengt(pw) {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("_25_PwStrengt", "Chapter5")?pw=' + pw,
+                    success: function(data) {
+                        if (data !== null && data !== "") {
+                            $("#PasswordStrength").removeClass();
+                            $("#PasswordStrength").addClass("pwStrength_" + data);
+                        }
+                    }
+                });
+            }
+        }();
+    </script>
+}

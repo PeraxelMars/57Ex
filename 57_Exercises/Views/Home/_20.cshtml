@@ -1,0 +1,86 @@
+﻿@using _57_Exercises.Controllers
+
+@model _57_Exercises.ViewModels.Ex20ViewModel
+
+@{
+    ViewBag.Title = "20";
+}
+
+@using (Ajax.BeginForm(actionName: nameof(HomeController._20), ajaxOptions: new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
+{
+    @*@Html.EnumDropDownListFor(p=>p.Months, "- Select a month -", new { @class = "form-control"})*@
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.OrderAmount)<br />
+        @Html.EditorFor(m => m.OrderAmount, new { htmlAttributes = new { @class = "form-control", autofocus = "", } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.State)<br />
+        @Html.DropDownListFor(m => m.State, Model.States, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.County)<br />
+        @Html.DropDownListFor(m => m.County, new List<SelectListItem>(), new { @class = "form-control", style = "min-width:10em" })
+    </div>
+        <br />
+
+        <div class="form-inline">
+            <div class="form-inline marginTop2">
+                <button type="submit" id="btnSubmit" class="btn btn-default">Ok</button>
+            </div>
+        </div>
+
+
+}
+
+<p>
+    <div id="result"></div>
+    <h2 class="text-primary text-warning" id="error"></h2>
+</p>
+
+
+@section scripts
+{
+    <script>
+        var SalesTax = function () {
+            $(document).on("change", "#State", function () {
+
+                $("#result").empty();
+                $("#County").empty();
+
+                getCounties();
+            });
+
+            function getCounties() {
+                var $County = $("#County");
+                var state = $("#State").val();
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("_20_Counties", "Home")?State=' + state,
+                    success: function(data) {
+                        if (data !== null && data !== "") {
+                            $County.html(data);
+                        }
+
+                        ToggleDisabled($County);
+                    }
+                });
+            }
+
+            function ToggleDisabled(element)
+            {
+                element.removeAttr("disabled");
+                if (element.children().length === 0) {
+                    element.attr("disabled", "false");
+                }
+            }
+
+            $(document).ready(function() {
+                ToggleDisabled($("#County"));
+            });
+
+        }();
+    </script>
+}

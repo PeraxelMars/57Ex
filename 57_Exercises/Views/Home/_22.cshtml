@@ -1,0 +1,47 @@
+﻿@using _57_Exercises.Controllers
+
+@model _57_Exercises.ViewModels.Ex22ViewModel
+
+@{
+    ViewBag.Title = "22";
+}
+
+@using (Ajax.BeginForm(actionName: nameof(HomeController._22), ajaxOptions: new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Numbers, "Number 1:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Numbers[0], new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Numbers, "Number 2:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Numbers[1], new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Numbers, "Number 3:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Numbers[2], new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="submit" value="Ok" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<p>
+    <div id="result"></div>
+    <h2 class="text-primary text-warning" id="error"></h2>
+</p>

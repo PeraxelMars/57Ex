@@ -8,6 +8,7 @@
     padding-top: 80px;
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 4rem;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -29,6 +30,10 @@ textarea {
 }
 /*Bootstrap overrides*/
 footer#footer {
-    position: absolute;
-    bottom: 1em;
+    border-top: 1px solid silver;
+    background-color: snow;
+    line-height: 4rem;
+    position:fixed;
+    bottom: 0;
+    z-index: 100;
 }

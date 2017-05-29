@@ -1,0 +1,23 @@
+﻿@model _57_Exercises.ViewModels.Ex24ViewModel
+
+@{
+    if (ViewBag.ErrorMsg != null)
+    {
+        <p>@ViewBag.ErrorMsg</p>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Results
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @($"\"{Model.S1}\" and \"{Model.S2}\" are {(Model.IsAnagram?"":"NOT")} anagrams.")
+                </td>
+            </tr>
+        </table>
+    }
+}

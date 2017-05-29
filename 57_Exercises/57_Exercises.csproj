@@ -129,16 +129,25 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Chapter6Controller.cs" />
+    <Compile Include="Controllers\Chapter5Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Helper57.cs" />
+    <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\PlaceholderAttribute.cs" />
     <Compile Include="Models\Ex12.cs" />
     <Compile Include="Models\Ex14.cs" />
     <Compile Include="Models\Ex15.cs" />
     <Compile Include="Models\Ex18.cs" />
+    <Compile Include="Models\Ex20.cs" />
+    <Compile Include="Models\Ex22.cs" />
+    <Compile Include="Models\Ex24.cs" />
+    <Compile Include="Models\Ex25.cs" />
+    <Compile Include="Models\Ex27.cs" />
+    <Compile Include="Models\Months.cs" />
     <Compile Include="ViewModels\Ex10ViewModel.cs" />
     <Compile Include="Models\Ex7.cs" />
     <Compile Include="Models\Ex8.cs" />
@@ -150,7 +159,16 @@
     <Compile Include="ViewModels\Ex18ViewModel.cs" />
     <Compile Include="ViewModels\Ex15ViewModel.cs" />
     <Compile Include="ViewModels\Ex14ViewModel.cs" />
+    <Compile Include="ViewModels\Ex20ViewModel.cs" />
+    <Compile Include="ViewModels\Ex22ViewModel.cs" />
+    <Compile Include="ViewModels\Ex24ViewModel.cs" />
+    <Compile Include="ViewModels\Ex25ViewModel.cs" />
+    <Compile Include="ViewModels\Ex27ViewModel.cs" />
     <Compile Include="ViewModels\Ex9ViewModel.cs" />
+    <Content Include="Views\Chapter5\_27.cshtml" />
+    <Content Include="Views\Chapter5\_27_partial.cshtml" />
+    <Content Include="Views\Chapter6\_28.cshtml" />
+    <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -225,9 +243,19 @@
     <Content Include="Views\Home\_15_partial.cshtml" />
     <Content Include="Views\Home\_18.cshtml" />
     <Content Include="Views\Home\_18_partial.cshtml" />
+    <Content Include="Views\Home\_20.cshtml" />
+    <Content Include="Views\Home\_20_partial.cshtml" />
+    <Content Include="Views\Home\_20_partialCounties.cshtml" />
+    <Content Include="Views\Home\_22.cshtml" />
+    <Content Include="Views\Home\_22_partial.cshtml" />
+    <Content Include="Views\Chapter5\_24.cshtml" />
+    <Content Include="Views\Chapter5\_24_partial.cshtml" />
+    <Content Include="Views\Chapter5\_25.cshtml" />
+    <Content Include="Views\Chapter5\_25_partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

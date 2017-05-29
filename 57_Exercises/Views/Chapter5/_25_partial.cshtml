@@ -1,0 +1,24 @@
+﻿@model _57_Exercises.ViewModels.Ex25ViewModel
+
+@{
+    if (ViewBag.ErrorMsg != null)
+    {
+        <p>@ViewBag.ErrorMsg</p>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Results
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @($"The password \"{Model.Password}\" is a ")
+                    @Html.DisplayFor(m => m.PasswordStrengt).ToString().ToLower() password.
+                </td>
+            </tr>
+        </table>
+    }
+}
