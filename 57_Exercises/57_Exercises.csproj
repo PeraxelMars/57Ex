@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Chapter7Controller.cs" />
     <Compile Include="Controllers\Chapter6Controller.cs" />
     <Compile Include="Controllers\Chapter5Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -147,6 +148,10 @@
     <Compile Include="Models\Ex24.cs" />
     <Compile Include="Models\Ex25.cs" />
     <Compile Include="Models\Ex27.cs" />
+    <Compile Include="Models\Ex30.cs" />
+    <Compile Include="Models\Ex32.cs" />
+    <Compile Include="Models\Ex34.cs" />
+    <Compile Include="Models\Ex33.cs" />
     <Compile Include="Models\Months.cs" />
     <Compile Include="ViewModels\Ex10ViewModel.cs" />
     <Compile Include="Models\Ex7.cs" />
@@ -164,10 +169,20 @@
     <Compile Include="ViewModels\Ex24ViewModel.cs" />
     <Compile Include="ViewModels\Ex25ViewModel.cs" />
     <Compile Include="ViewModels\Ex27ViewModel.cs" />
+    <Compile Include="ViewModels\Ex34ViewModel.cs" />
+    <Compile Include="ViewModels\Ex32ViewModel.cs" />
+    <Compile Include="ViewModels\Ex28ViewModel.cs" />
     <Compile Include="ViewModels\Ex9ViewModel.cs" />
     <Content Include="Views\Chapter5\_27.cshtml" />
     <Content Include="Views\Chapter5\_27_partial.cshtml" />
     <Content Include="Views\Chapter6\_28.cshtml" />
+    <Content Include="Views\Chapter6\_30.cshtml" />
+    <Content Include="Views\Chapter6\_32.cshtml" />
+    <Content Include="Views\Chapter6\_32_Answer.cshtml" />
+    <Content Include="Views\Chapter6\_32_partial.cshtml" />
+    <Content Include="Views\Chapter7\_33.cshtml" />
+    <Content Include="Views\Chapter7\_33_partial.cshtml" />
+    <Content Include="Views\Chapter7\_34.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
   </ItemGroup>
   <ItemGroup>

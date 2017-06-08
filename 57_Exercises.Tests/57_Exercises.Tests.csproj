@@ -82,6 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Chapter7ControllerTests.cs" />
     <Compile Include="Controllers\Chapter6ControllerTests.cs" />
     <Compile Include="Controllers\Chapter5ControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

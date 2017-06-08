@@ -20,19 +20,48 @@ namespace _57_Exercises.Controllers
         [System.Web.Mvc.HttpPost]
         public ContentResult _28(Ex28ViewModel data)
         {
-            //if (string.IsNullOrEmpty(values))
-            //    return Content("Invalid data!");
-
-           //var numbers = JsonConvert.DeserializeObject<List<Int64>>(value);
-
             var sum = data.Values.Sum();
 
             return Content(sum.ToString());
         }
-    }
 
-    public class Ex28ViewModel
-    {
-        public int[] Values { get; set; }
+        public ActionResult _30()
+        {
+            return View(Ex30.GenerateMultiTable0to12());
+        }
+
+        public ActionResult _32()
+        {
+            return View();
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public ActionResult _32_Answer(Ex32ViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.ErrorMsg = "Invalid data!";
+            }
+
+            TempData["RightNumber"] = Ex32.GetRandomRightNumber(vm);
+
+            return View(vm);
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public PartialViewResult _32_Guess(Ex32ViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.ErrorMsg = "Invalid data!";
+            }
+
+            int rightNumber = int.Parse(TempData["RightNumber"].ToString());
+            TempData["RightNumber"] = rightNumber;
+
+            vm.AnswerStatus = Ex32.CheckAnswer(vm.Answer, rightNumber);
+
+            return PartialView("_32_partial", vm);
+        }
     }
 }

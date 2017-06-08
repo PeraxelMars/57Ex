@@ -9,7 +9,7 @@ namespace _57_Exercises.Tests.Controllers
     public class Chapter6ControllerTests
     {
         [TestMethod]
-        public void _28_WhenGivenTwoAnagrams_SholudReturnTrue()
+        public void _32_WhenGivenTheRightAnswer_SholudReturnTrue()
         {
             // Arrange
             

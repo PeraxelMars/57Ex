@@ -1,0 +1,33 @@
+﻿@using _57_Exercises.Models
+@model _57_Exercises.ViewModels.Ex32ViewModel
+
+@{
+    if (ViewBag.ErrorMsg != null)
+    {
+        <p>@ViewBag.ErrorMsg</p>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Results
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @($"The answer \"{Model.Answer}\" is ")
+                    @Html.DisplayFor(m => m.AnswerStatus).ToString().ToLower().
+                </td>
+            </tr>
+            @if (Model.AnswerStatus != AnswerStatus.Correct)
+            {
+                <tr>
+                    <td>
+                        @($"The number is between 1 and {10 * Model.DifficultyLevel}.")
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+}

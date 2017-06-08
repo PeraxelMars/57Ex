@@ -1,0 +1,30 @@
+﻿@using _57_Exercises.Controllers
+
+@model string
+
+@{
+    ViewBag.Title = "33";
+}
+
+@using (Ajax.BeginForm(actionName: nameof(Chapter7Controller._33), ajaxOptions: new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("What is your question?", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("question", "", new { @class = "form-control", Value = "" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ok" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<p>
+    <div id="result"></div>
+    <h2 class="text-primary text-warning" id="error"></h2>
+</p>

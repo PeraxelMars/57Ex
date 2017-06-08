@@ -1,0 +1,32 @@
+﻿@using _57_Exercises.Controllers
+
+@model IEnumerable<IEnumerable<int>>
+
+@{
+    ViewBag.Title = "30";
+}
+
+<table class="table table-bordered text-center" style="width: auto">
+    <tr>
+        <td>&nbsp;</td>
+        @for (int i = 1; i < Model.Count()+1; i++)
+        {
+            <td>@i</td>
+        }
+    </tr>
+
+    @{
+        int row = 1;
+        foreach (var values in Model)
+        {
+            <tr>
+                <td>@(row)</td>
+                @foreach (var value in values)
+                {
+                    <td style="@(row*row == value ? "background-color:#eee" : "")" >@value</td>
+                }
+                @{ row++; }
+            </tr>
+        }
+    }
+</table>
